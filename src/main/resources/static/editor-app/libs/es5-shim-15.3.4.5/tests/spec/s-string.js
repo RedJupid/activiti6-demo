@@ -49,37 +49,37 @@ describe('String', function() {
             it("'ab'.split(/(?:ab)*?/) results in ['a', 'b']", function () {
                 expect('ab'.split(/(?:ab)*?/)).toEqual(['a', 'b']);
             });
-            it("'test'.split('') results in ['t', 'e', 's', 't']", function () {
+            it("'common'.split('') results in ['t', 'e', 's', 't']", function () {
                 expect('test'.split('')).toEqual(['t', 'e', 's', 't']);
             });
-            it("'test'.split() results in ['test']", function () {
+            it("'common'.split() results in ['common']", function () {
                 expect('test'.split()).toEqual(['test']);
             });
             it("'111'.split(1) results in ['', '', '', '']", function () {
                 expect('111'.split(1)).toEqual(['', '', '', '']);
             });
-            it("'test'.split(/(?:)/, 2) results in ['t', 'e']", function () {
+            it("'common'.split(/(?:)/, 2) results in ['t', 'e']", function () {
                 expect('test'.split(/(?:)/, 2)).toEqual(['t', 'e']);
             });
-            it("'test'.split(/(?:)/, -1) results in ['t', 'e', 's', 't']", function () {
+            it("'common'.split(/(?:)/, -1) results in ['t', 'e', 's', 't']", function () {
                 expect('test'.split(/(?:)/, -1)).toEqual(['t', 'e', 's', 't']);
             });
-            it("'test'.split(/(?:)/, undefined) results in ['t', 'e', 's', 't']", function () {
+            it("'common'.split(/(?:)/, undefined) results in ['t', 'e', 's', 't']", function () {
                 expect('test'.split(/(?:)/, undefined)).toEqual(['t', 'e', 's', 't']);
             });
-            it("'test'.split(/(?:)/, null) results in []", function () {
+            it("'common'.split(/(?:)/, null) results in []", function () {
                 expect('test'.split(/(?:)/, null)).toEqual([]);
             });
-            it("'test'.split(/(?:)/, NaN) results in []", function () {
+            it("'common'.split(/(?:)/, NaN) results in []", function () {
                 expect('test'.split(/(?:)/, NaN)).toEqual([]);
             });
-            it("'test'.split(/(?:)/, true) results in ['t']", function () {
+            it("'common'.split(/(?:)/, true) results in ['t']", function () {
                 expect('test'.split(/(?:)/, true)).toEqual(['t']);
             });
-            it("'test'.split(/(?:)/, '2') results in ['t', 'e']", function () {
+            it("'common'.split(/(?:)/, '2') results in ['t', 'e']", function () {
                 expect('test'.split(/(?:)/, '2')).toEqual(['t', 'e']);
             });
-            it("'test'.split(/(?:)/, 'two') results in []", function () {
+            it("'common'.split(/(?:)/, 'two') results in []", function () {
                 expect('test'.split(/(?:)/, 'two')).toEqual([]);
             });
             it("'a'.split(/-/) results in ['a']", function () {
@@ -163,25 +163,25 @@ describe('String', function() {
             it("'tesst'.split(/(?=s+)/) results in ['te', 's', 'st']", function () {
                 expect('tesst'.split(/(?=s+)/)).toEqual(['te', 's', 'st']);
             });
-            it("'test'.split('t') results in ['', 'es', '']", function () {
+            it("'common'.split('t') results in ['', 'es', '']", function () {
                 expect('test'.split('t')).toEqual(['', 'es', '']);
             });
-            it("'test'.split('es') results in ['t', 't']", function () {
+            it("'common'.split('es') results in ['t', 't']", function () {
                 expect('test'.split('es')).toEqual(['t', 't']);
             });
-            it("'test'.split(/t/) results in ['', 'es', '']", function () {
+            it("'common'.split(/t/) results in ['', 'es', '']", function () {
                 expect('test'.split(/t/)).toEqual(['', 'es', '']);
             });
-            it("'test'.split(/es/) results in ['t', 't']", function () {
+            it("'common'.split(/es/) results in ['t', 't']", function () {
                 expect('test'.split(/es/)).toEqual(['t', 't']);
             });
-            it("'test'.split(/(t)/) results in ['', 't', 'es', 't', '']", function () {
+            it("'common'.split(/(t)/) results in ['', 't', 'es', 't', '']", function () {
                 expect('test'.split(/(t)/)).toEqual(['', 't', 'es', 't', '']);
             });
-            it("'test'.split(/(es)/) results in ['t', 'es', 't']", function () {
+            it("'common'.split(/(es)/) results in ['t', 'es', 't']", function () {
                 expect('test'.split(/(es)/)).toEqual(['t', 'es', 't']);
             });
-            it("'test'.split(/(t)(e)(s)(t)/) results in ['', 't', 'e', 's', 't', '']", function () {
+            it("'common'.split(/(t)(e)(s)(t)/) results in ['', 't', 'e', 's', 't', '']", function () {
                 expect('test'.split(/(t)(e)(s)(t)/)).toEqual(['', 't', 'e', 's', 't', '']);
             });
             it("'.'.split(/(((.((.??)))))/) results in ['', '.', '.', '.', '', '', '']", function () {

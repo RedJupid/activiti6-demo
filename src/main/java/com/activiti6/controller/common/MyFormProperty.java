@@ -1,4 +1,4 @@
-package com.activiti6.controller.test;
+package com.activiti6.controller.common;
 
 import java.io.Serializable;
 

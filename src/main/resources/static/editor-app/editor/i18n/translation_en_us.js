@@ -214,7 +214,7 @@ if(!ORYX.I18N.Tester) ORYX.I18N.Tester = {};
 
 ORYX.I18N.Tester.group = "Testing";
 ORYX.I18N.Tester.name = "Test process";
-ORYX.I18N.Tester.desc = "Open the test component to test this process definition";
+ORYX.I18N.Tester.desc = "Open the common component to common this process definition";
 
 if(!ORYX.I18N.Undo) ORYX.I18N.Undo = {};
 

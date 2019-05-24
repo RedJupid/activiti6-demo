@@ -1,6 +1,7 @@
-package com.activiti6.controller.test;
+package com.activiti6.controller.common;
 
 import com.activiti6.util.FlowUtils;
+import com.activiti6.util.process.FlowChartUtil;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,19 +10,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
-import java.util.List;
 
 @Controller
 public class ImageController {
 
+//    @Autowired
+//    FlowUtils flowUtils;
+
     @Autowired
-    FlowUtils flowUtils;
+    FlowChartUtil flowChartUtil;
 
     @GetMapping(value = "/image")
     public ModelAndView home(ModelAndView modelAndView){
-        modelAndView.setViewName("home");
+        modelAndView.setViewName("image");
         return modelAndView;
     }
 
@@ -29,9 +33,12 @@ public class ImageController {
      * 查看实例流程图，根据流程实例ID获取流程图
      */
     @GetMapping(value="processImg/{instanceId}")
-    public void traceprocess(HttpServletResponse response, @PathVariable("instanceId")String instanceId) throws Exception{
+    public void traceprocess(HttpServletRequest request, HttpServletResponse response, @PathVariable("instanceId")String instanceId) throws Exception{
 
-        InputStream in = flowUtils.getResourceDiagramInputStream(instanceId);
+        response.setContentType("application/x-png");
+//        response.addHeader("Content-Disposition", "attachment;fileName=" + "afkajf.png");
+//        InputStream in = flowUtils.getResourceDiagramInputStream(instanceId);
+        InputStream in = flowChartUtil.generateStream(request, response, instanceId, true);
         ServletOutputStream output = response.getOutputStream();
         IOUtils.copy(in, output);
 
