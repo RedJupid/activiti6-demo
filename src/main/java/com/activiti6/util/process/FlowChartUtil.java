@@ -209,11 +209,11 @@ public class FlowChartUtil {
                 HistoricActivityInstance activityImpl1 = historicActivityInstances.get(j);// 后续第一个节点
                 HistoricActivityInstance activityImpl2 = historicActivityInstances.get(j + 1);// 后续第二个节点
 
-//                if (df.format(activityImpl1.getStartTime()).equals(df.format(activityImpl2.getStartTime()))  )
-//                {// 如果第一个节点和第二个节点开始时间相同保存
+                if (df.format(activityImpl1.getStartTime()).equals(df.format(activityImpl2.getStartTime()))  )
+                {// 如果第一个节点和第二个节点开始时间相同保存
                     FlowNode sameActivityImpl2 = (FlowNode)bpmnModel.getMainProcess().getFlowElement(activityImpl2.getActivityId());
                     sameStartTimeNodes.add(sameActivityImpl2);
-//                }
+                }
 //                else
 //                {// 有不相同跳出循环
 //                    break;

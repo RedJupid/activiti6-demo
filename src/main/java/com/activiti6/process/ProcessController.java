@@ -7,6 +7,7 @@ import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.history.HistoricProcessInstance;
+import org.activiti.engine.history.HistoricVariableInstance;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,17 @@ public class ProcessController {
     @GetMapping("instance")
     public List<HistoricProcessInstance> getInstance(String name){
         return historyService.createHistoricProcessInstanceQuery().processDefinitionKey(name).list();
+    }
+
+    @GetMapping("/historyVariable")
+    @ApiOperation(value = "根据流程实例id获取历史流程变量")
+    public Map<String, Object> historyVariable(String instanceId){
+        List<HistoricVariableInstance> list = historyService.createHistoricVariableInstanceQuery().processInstanceId(instanceId).list();
+        Map<String, Object> m = new HashMap<>();
+        for (HistoricVariableInstance h: list){
+            m.put(h.getVariableName(),h.getValue());
+        }
+        return m;
     }
 
 

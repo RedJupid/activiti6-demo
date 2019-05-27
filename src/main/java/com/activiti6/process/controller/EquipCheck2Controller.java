@@ -16,10 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/equipCheck2")
@@ -105,15 +102,7 @@ public class EquipCheck2Controller {
     }
 
 
-    @GetMapping("/historyVariable")
-    public Map<String, Object> historyVariable(String instanceId){
-        List<HistoricVariableInstance> list = historyService.createHistoricVariableInstanceQuery().processInstanceId(instanceId).list();
-        Map<String, Object> m = new HashMap<>();
-        for (HistoricVariableInstance h: list){
-            m.put(h.getVariableName(),h.getValue());
-        }
-        return m;
-    }
+
 
 
 
