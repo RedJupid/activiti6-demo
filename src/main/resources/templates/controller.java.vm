@@ -45,10 +45,8 @@ public class ${table.controllerName} {
 #end
 private final Logger logger = LoggerFactory.getLogger(${table.controllerName}.class);
 
-@Autowired
-public ${table.serviceName} ${table.entityPath}Service;
-
-
+    @Autowired
+    public ${table.serviceName} ${table.entityPath}Service;
 
 
     @GetMapping("/all")

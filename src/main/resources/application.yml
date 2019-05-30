@@ -46,7 +46,13 @@ logging:
     com.xd.modules.sys.mapper: debug
 
 
-mybatis:
+#mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  mapper-locations: classpath:mapper/**/*.xml
+
+mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
+  type-aliases-package: com.xd.modules.sys.mapper
   mapper-locations: classpath:mapper/**/*.xml

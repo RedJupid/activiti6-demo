@@ -1,18 +1,16 @@
 package com.xd.modules.sys.mapper;
 
-import com.xd.modules.BaseMapper;
 import com.xd.modules.sys.entity.Problem;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+/**
+ * <p>
+ * 问题 Mapper 接口
+ * </p>
+ *
+ * @author zxd
+ * @since 2019-05-30
+ */
 public interface ProblemMapper extends BaseMapper<Problem> {
-    int deleteByPrimaryKey(Long id);
 
-    int insert(Problem record);
-
-    int insertSelective(Problem record);
-
-    Problem selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Problem record);
-
-    int updateByPrimaryKey(Problem record);
 }

@@ -1,164 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xd.modules.sys.mapper.ProblemMapper">
-  <resultMap id="BaseResultMap" type="com.xd.modules.sys.entity.Problem">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="degree" jdbcType="VARCHAR" property="degree" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="warm_time" jdbcType="TIMESTAMP" property="warmTime" />
-    <result column="status" jdbcType="VARCHAR" property="status" />
-    <result column="scheme_text" jdbcType="VARCHAR" property="schemeText" />
-    <result column="scheme_file" jdbcType="VARCHAR" property="schemeFile" />
-    <result column="process_id" jdbcType="VARCHAR" property="processId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, title, type, degree, start_time, end_time, warm_time, status, scheme_text, scheme_file, 
-    process_id
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from sys_problem
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_problem
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.xd.modules.sys.entity.Problem">
-    insert into sys_problem (id, title, type, 
-      degree, start_time, end_time, 
-      warm_time, status, scheme_text, 
-      scheme_file, process_id)
-    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{degree,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{warmTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{schemeText,jdbcType=VARCHAR}, 
-      #{schemeFile,jdbcType=VARCHAR}, #{processId,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.xd.modules.sys.entity.Problem">
-    insert into sys_problem
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="title != null">
-        title,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="degree != null">
-        degree,
-      </if>
-      <if test="startTime != null">
-        start_time,
-      </if>
-      <if test="endTime != null">
-        end_time,
-      </if>
-      <if test="warmTime != null">
-        warm_time,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="schemeText != null">
-        scheme_text,
-      </if>
-      <if test="schemeFile != null">
-        scheme_file,
-      </if>
-      <if test="processId != null">
-        process_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="title != null">
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=VARCHAR},
-      </if>
-      <if test="degree != null">
-        #{degree,jdbcType=VARCHAR},
-      </if>
-      <if test="startTime != null">
-        #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="warmTime != null">
-        #{warmTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="schemeText != null">
-        #{schemeText,jdbcType=VARCHAR},
-      </if>
-      <if test="schemeFile != null">
-        #{schemeFile,jdbcType=VARCHAR},
-      </if>
-      <if test="processId != null">
-        #{processId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xd.modules.sys.entity.Problem">
-    update sys_problem
-    <set>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=VARCHAR},
-      </if>
-      <if test="degree != null">
-        degree = #{degree,jdbcType=VARCHAR},
-      </if>
-      <if test="startTime != null">
-        start_time = #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null">
-        end_time = #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="warmTime != null">
-        warm_time = #{warmTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="schemeText != null">
-        scheme_text = #{schemeText,jdbcType=VARCHAR},
-      </if>
-      <if test="schemeFile != null">
-        scheme_file = #{schemeFile,jdbcType=VARCHAR},
-      </if>
-      <if test="processId != null">
-        process_id = #{processId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xd.modules.sys.entity.Problem">
-    update sys_problem
-    set title = #{title,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
-      degree = #{degree,jdbcType=VARCHAR},
-      start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP},
-      warm_time = #{warmTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=VARCHAR},
-      scheme_text = #{schemeText,jdbcType=VARCHAR},
-      scheme_file = #{schemeFile,jdbcType=VARCHAR},
-      process_id = #{processId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xd.modules.sys.entity.Problem">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="type" property="type" />
+        <result column="degree" property="degree" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="warm_time" property="warmTime" />
+        <result column="status" property="status" />
+        <result column="scheme_text" property="schemeText" />
+        <result column="scheme_file" property="schemeFile" />
+        <result column="process_id" property="processId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, title, type, degree, start_time, end_time, warm_time, status, scheme_text, scheme_file, process_id
+    </sql>
+
 </mapper>

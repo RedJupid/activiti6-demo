@@ -1,195 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xd.modules.sys.mapper.EquipCheckMapper">
-  <resultMap id="BaseResultMap" type="com.xd.modules.sys.entity.EquipCheck">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="equipName" jdbcType="VARCHAR" property="equipname" />
-    <result column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
-    <result column="informBill" jdbcType="VARCHAR" property="informbill" />
-    <result column="applyBill" jdbcType="VARCHAR" property="applybill" />
-    <result column="recordBill" jdbcType="VARCHAR" property="recordbill" />
-    <result column="lackBill" jdbcType="VARCHAR" property="lackbill" />
-    <result column="addBill" jdbcType="VARCHAR" property="addbill" />
-    <result column="process_id" jdbcType="VARCHAR" property="processId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, equipName, manufacturer, informBill, applyBill, recordBill, lackBill, addBill, 
-    process_id
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from sys_equip_check
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_equip_check
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.xd.modules.sys.entity.EquipCheck">
-    insert into sys_equip_check (id, equipName, manufacturer, 
-      informBill, applyBill, recordBill, 
-      lackBill, addBill, process_id
-      )
-    values (#{id,jdbcType=BIGINT}, #{equipname,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR}, 
-      #{informbill,jdbcType=VARCHAR}, #{applybill,jdbcType=VARCHAR}, #{recordbill,jdbcType=VARCHAR}, 
-      #{lackbill,jdbcType=VARCHAR}, #{addbill,jdbcType=VARCHAR}, #{processId,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.xd.modules.sys.entity.EquipCheck">
-    insert into sys_equip_check
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="equipname != null">
-        equipName,
-      </if>
-      <if test="manufacturer != null">
-        manufacturer,
-      </if>
-      <if test="informbill != null">
-        informBill,
-      </if>
-      <if test="applybill != null">
-        applyBill,
-      </if>
-      <if test="recordbill != null">
-        recordBill,
-      </if>
-      <if test="lackbill != null">
-        lackBill,
-      </if>
-      <if test="addbill != null">
-        addBill,
-      </if>
-      <if test="processId != null">
-        process_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="equipname != null">
-        #{equipname,jdbcType=VARCHAR},
-      </if>
-      <if test="manufacturer != null">
-        #{manufacturer,jdbcType=VARCHAR},
-      </if>
-      <if test="informbill != null">
-        #{informbill,jdbcType=VARCHAR},
-      </if>
-      <if test="applybill != null">
-        #{applybill,jdbcType=VARCHAR},
-      </if>
-      <if test="recordbill != null">
-        #{recordbill,jdbcType=VARCHAR},
-      </if>
-      <if test="lackbill != null">
-        #{lackbill,jdbcType=VARCHAR},
-      </if>
-      <if test="addbill != null">
-        #{addbill,jdbcType=VARCHAR},
-      </if>
-      <if test="processId != null">
-        #{processId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xd.modules.sys.entity.EquipCheck">
-    update sys_equip_check
-    <set>
-      <if test="equipname != null">
-        equipName = #{equipname,jdbcType=VARCHAR},
-      </if>
-      <if test="manufacturer != null">
-        manufacturer = #{manufacturer,jdbcType=VARCHAR},
-      </if>
-      <if test="informbill != null">
-        informBill = #{informbill,jdbcType=VARCHAR},
-      </if>
-      <if test="applybill != null">
-        applyBill = #{applybill,jdbcType=VARCHAR},
-      </if>
-      <if test="recordbill != null">
-        recordBill = #{recordbill,jdbcType=VARCHAR},
-      </if>
-      <if test="lackbill != null">
-        lackBill = #{lackbill,jdbcType=VARCHAR},
-      </if>
-      <if test="addbill != null">
-        addBill = #{addbill,jdbcType=VARCHAR},
-      </if>
-      <if test="processId != null">
-        process_id = #{processId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xd.modules.sys.entity.EquipCheck">
-    update sys_equip_check
-    set equipName = #{equipname,jdbcType=VARCHAR},
-      manufacturer = #{manufacturer,jdbcType=VARCHAR},
-      informBill = #{informbill,jdbcType=VARCHAR},
-      applyBill = #{applybill,jdbcType=VARCHAR},
-      recordBill = #{recordbill,jdbcType=VARCHAR},
-      lackBill = #{lackbill,jdbcType=VARCHAR},
-      addBill = #{addbill,jdbcType=VARCHAR},
-      process_id = #{processId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
 
-  <select id="selectAll" resultMap="BaseResultMap">
-    select * from sys_equip_check
-  </select>
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xd.modules.sys.entity.EquipCheck">
+        <id column="id" property="id" />
+        <result column="equipName" property="equipName" />
+        <result column="manufacturer" property="manufacturer" />
+        <result column="informBill" property="informBill" />
+        <result column="applyBill" property="applyBill" />
+        <result column="recordBill" property="recordBill" />
+        <result column="lackBill" property="lackBill" />
+        <result column="addBill" property="addBill" />
+        <result column="process_id" property="processId" />
+    </resultMap>
 
-  <resultMap id="TotalMap" type="com.xd.modules.sys.vo.EquipCheckVO">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="equipName" jdbcType="VARCHAR" property="equipname" />
-    <result column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
-    <result column="informBill" jdbcType="VARCHAR" property="informbill" />
-    <result column="applyBill" jdbcType="VARCHAR" property="applybill" />
-    <result column="recordBill" jdbcType="VARCHAR" property="recordbill" />
-    <result column="lackBill" jdbcType="VARCHAR" property="lackbill" />
-    <result column="addBill" jdbcType="VARCHAR" property="addbill" />
-    <result column="process_id" jdbcType="VARCHAR" property="processId" />
-    <collection property="checkOpinions" ofType="com.xd.modules.sys.entity.CheckOpinion" javaType="java.util.ArrayList">
-      <id column="o_id" jdbcType="BIGINT" property="id" />
-      <result column="checker" jdbcType="VARCHAR" property="checker" />
-      <result column="checkTime" jdbcType="TIMESTAMP" property="checktime" />
-      <result column="pass" jdbcType="INTEGER" property="pass" />
-      <result column="opinion" jdbcType="VARCHAR" property="opinion" />
-      <result column="process_id" jdbcType="VARCHAR" property="processId" />
-    </collection>
-    <collection property="problems" ofType="com.xd.modules.sys.entity.Problem">
-      <id column="p_id" jdbcType="BIGINT" property="id" />
-      <result column="title" jdbcType="VARCHAR" property="title" />
-      <result column="type" jdbcType="VARCHAR" property="type" />
-      <result column="degree" jdbcType="VARCHAR" property="degree" />
-      <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-      <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-      <result column="warm_time" jdbcType="TIMESTAMP" property="warmTime" />
-      <result column="status" jdbcType="VARCHAR" property="status" />
-      <result column="scheme_text" jdbcType="VARCHAR" property="schemeText" />
-      <result column="scheme_file" jdbcType="VARCHAR" property="schemeFile" />
-      <result column="process_id" jdbcType="VARCHAR" property="processId" />
-    </collection>
-  </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, equipName, manufacturer, informBill, applyBill, recordBill, lackBill, addBill, process_id
+    </sql>
+    
+    <resultMap id="withProAndOpi" type="com.xd.modules.sys.vo.EquipCheckVO">
+        <collection property="equipCheck" ofType="com.xd.modules.sys.entity.EquipCheck">
+            <id column="id" property="id" />
+            <result column="equipName" property="equipName" />
+            <result column="manufacturer" property="manufacturer" />
+            <result column="informBill" property="informBill" />
+            <result column="applyBill" property="applyBill" />
+            <result column="recordBill" property="recordBill" />
+            <result column="lackBill" property="lackBill" />
+            <result column="addBill" property="addBill" />
+            <result column="process_id" property="processId" />
+        </collection>
+        <collection property="problems" ofType="com.xd.modules.sys.entity.Problem">
+            <id column="pid" property="id" />
+            <result column="title" property="title" />
+            <result column="type" property="type" />
+            <result column="degree" property="degree" />
+            <result column="start_time" property="startTime" />
+            <result column="end_time" property="endTime" />
+            <result column="warm_time" property="warmTime" />
+            <result column="status" property="status" />
+            <result column="scheme_text" property="schemeText" />
+            <result column="scheme_file" property="schemeFile" />
+            <result column="process_id1" property="processId" />
+        </collection>
+        <collection property="checkOpinions" ofType="com.xd.modules.sys.entity.CheckOpinion">
+            <id column="cid" property="id" />
+            <result column="checker" property="checker" />
+            <result column="checkTime" property="checkTime" />
+            <result column="pass" property="pass" />
+            <result column="opinion" property="opinion" />
+            <result column="process_id2" property="processId" />
+        </collection>
+    </resultMap>
+    
+    <select id="selectWithProAndOpi" resultMap="withProAndOpi" parameterType="String">
+        select e.*,
+        p.id pid, p.title, p.type, p.degree, p.start_time, p.end_time, p.warm_time, p.status, p.scheme_text, p.scheme_file, p.process_id process_id1,
+        c.id cid, c.checker, c.checkTime, c.pass, c.opinion, c.process_id process_id2
+        from sys_equip_check e
+        left join sys_problem p on e.process_id = p.process_id
+        left join sys_check_opinion c on e.process_id = c.process_id
+        where e.process_id = #{processId,jdbcType=VARCHAR}
+    </select>
 
-  <select id="selectTotal" resultMap="TotalMap">
-    select e.*,
-     o.id o_id,
-     o.checker,
-     o.checkTime,
-     o.pass,
-     o.opinion,
-     o.process_id,
-     p.id p_id,p.title,p.type,p.degree, p.start_time,p.end_time, p.warm_time, p.status, p.scheme_text, p.scheme_file, p.process_id
-
-    from sys_equip_check e
-    left join sys_check_opinion o on o.process_id = #{processId,jdbcType=VARCHAR}
-    left join sys_problem p on p.process_id = #{processId,jdbcType=VARCHAR}
-    where e.process_id=#{processId,jdbcType=VARCHAR}
-  </select>
 </mapper>

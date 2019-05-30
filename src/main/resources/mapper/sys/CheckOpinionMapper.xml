@@ -1,106 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xd.modules.sys.mapper.CheckOpinionMapper">
-  <resultMap id="BaseResultMap" type="com.xd.modules.sys.entity.CheckOpinion">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="checker" jdbcType="VARCHAR" property="checker" />
-    <result column="checkTime" jdbcType="TIMESTAMP" property="checktime" />
-    <result column="pass" jdbcType="INTEGER" property="pass" />
-    <result column="opinion" jdbcType="VARCHAR" property="opinion" />
-    <result column="process_id" jdbcType="VARCHAR" property="processId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, checker, checkTime, pass, opinion, process_id
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from sys_check_opinion
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from sys_check_opinion
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.xd.modules.sys.entity.CheckOpinion">
-    insert into sys_check_opinion (id, checker, checkTime, 
-      pass, opinion, process_id
-      )
-    values (#{id,jdbcType=BIGINT}, #{checker,jdbcType=VARCHAR}, #{checktime,jdbcType=TIMESTAMP}, 
-      #{pass,jdbcType=INTEGER}, #{opinion,jdbcType=VARCHAR}, #{processId,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.xd.modules.sys.entity.CheckOpinion">
-    insert into sys_check_opinion
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="checker != null">
-        checker,
-      </if>
-      <if test="checktime != null">
-        checkTime,
-      </if>
-      <if test="pass != null">
-        pass,
-      </if>
-      <if test="opinion != null">
-        opinion,
-      </if>
-      <if test="processId != null">
-        process_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="checker != null">
-        #{checker,jdbcType=VARCHAR},
-      </if>
-      <if test="checktime != null">
-        #{checktime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="pass != null">
-        #{pass,jdbcType=INTEGER},
-      </if>
-      <if test="opinion != null">
-        #{opinion,jdbcType=VARCHAR},
-      </if>
-      <if test="processId != null">
-        #{processId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xd.modules.sys.entity.CheckOpinion">
-    update sys_check_opinion
-    <set>
-      <if test="checker != null">
-        checker = #{checker,jdbcType=VARCHAR},
-      </if>
-      <if test="checktime != null">
-        checkTime = #{checktime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="pass != null">
-        pass = #{pass,jdbcType=INTEGER},
-      </if>
-      <if test="opinion != null">
-        opinion = #{opinion,jdbcType=VARCHAR},
-      </if>
-      <if test="processId != null">
-        process_id = #{processId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xd.modules.sys.entity.CheckOpinion">
-    update sys_check_opinion
-    set checker = #{checker,jdbcType=VARCHAR},
-      checkTime = #{checktime,jdbcType=TIMESTAMP},
-      pass = #{pass,jdbcType=INTEGER},
-      opinion = #{opinion,jdbcType=VARCHAR},
-      process_id = #{processId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xd.modules.sys.entity.CheckOpinion">
+        <id column="id" property="id" />
+        <result column="checker" property="checker" />
+        <result column="checkTime" property="checkTime" />
+        <result column="pass" property="pass" />
+        <result column="opinion" property="opinion" />
+        <result column="process_id" property="processId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, checker, checkTime, pass, opinion, process_id
+    </sql>
+
 </mapper>
