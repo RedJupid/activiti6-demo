@@ -1,19 +1,16 @@
-package com.activiti6;
+package com;
 
-import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.image.ProcessDiagramGenerator;
 import org.activiti.image.impl.DefaultProcessDiagramGenerator;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.awt.image.BufferedImage;
-import java.io.InputStream;
-import java.util.List;
-
 @SpringBootApplication
 @EnableSwagger2
+@MapperScan("com.xd.modules.**.mapper")
 public class Activiti6DemoApplication {
 
     public static void main(String[] args) {

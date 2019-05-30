@@ -1,4 +1,4 @@
-package com.activiti6.process;
+package com.xd.process;
 
 
 import io.swagger.annotations.ApiOperation;
@@ -9,9 +9,11 @@ import org.activiti.engine.TaskService;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricVariableInstance;
 import org.activiti.engine.task.Task;
-import org.activiti.engine.task.TaskQuery;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,7 +77,5 @@ public class ProcessController {
         }
         return m;
     }
-
-
 
 }

@@ -75,25 +75,25 @@
 		     </exclusions>
     	</dependency>
     	
-	    <dependency> 
-		    <groupId>org.apache.xmlgraphics</groupId> 
-		    <artifactId>batik-codec</artifactId> 
-		    <version>${apache.xmlgraphics.version}</version> 
-	    </dependency> 
-	    <dependency> 
-		    <groupId>org.apache.xmlgraphics</groupId> 
-		    <artifactId>batik-css</artifactId> 
-		    <version>${apache.xmlgraphics.version}</version> 
-	    </dependency> 
-	    <dependency> 
-		    <groupId>org.apache.xmlgraphics</groupId> 
-		    <artifactId>batik-svg-dom</artifactId> 
-		    <version>${apache.xmlgraphics.version}</version> 
-	    </dependency> 
-	    <dependency> 
-		    <groupId>org.apache.xmlgraphics</groupId> 
-		    <artifactId>batik-svggen</artifactId> 
-		    <version>${apache.xmlgraphics.version}</version> 
+	    <dependency>
+		    <groupId>org.apache.xmlgraphics</groupId>
+		    <artifactId>batik-codec</artifactId>
+		    <version>${apache.xmlgraphics.version}</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.apache.xmlgraphics</groupId>
+		    <artifactId>batik-css</artifactId>
+		    <version>${apache.xmlgraphics.version}</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.apache.xmlgraphics</groupId>
+		    <artifactId>batik-svg-dom</artifactId>
+		    <version>${apache.xmlgraphics.version}</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.apache.xmlgraphics</groupId>
+		    <artifactId>batik-svggen</artifactId>
+		    <version>${apache.xmlgraphics.version}</version>
 	    </dependency>
 
 		<!-- ############################# Swagger 相关########################## -->
@@ -108,9 +108,36 @@
 			<version>2.9.2</version>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.mybatis.generator</groupId>
+			<artifactId>mybatis-generator-core</artifactId>
+			<version>1.3.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.10</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.58</version>
 		</dependency>
 	</dependencies>
 

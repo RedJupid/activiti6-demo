@@ -1,0 +1,138 @@
+package ${package.Controller};
+
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+
+#if(${restControllerStyle})
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+import org.springframework.beans.factory.annotation.Autowired;
+import ${package.Service}.${table.serviceName};
+import ${package.Entity}.${entity};
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
+
+/**
+ *   @description : ${entity} 控制器
+ *   ---------------------------------
+ *   @author ${author}
+ *   @since ${date}
+ */
+#if(${swagger2})
+@Api(tags = {"${table.comment}控制器"})
+#end
+#if(${restControllerStyle})
+@RestController
+#else
+@Controller
+#end
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+private final Logger logger = LoggerFactory.getLogger(${table.controllerName}.class);
+
+@Autowired
+public ${table.serviceName} ${table.entityPath}Service;
+
+
+
+
+    @GetMapping("/all")
+    @ApiOperation(value = "获取所有${table.comment}")
+    public List<${entity}> all(){
+        return ${table.entityPath}Service.list();
+    }
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "根据id获取${table.comment}")
+    public ${entity} getById(@PathVariable Integer id){
+        return ${table.entityPath}Service.getById(id);
+    }
+
+    @PostMapping
+    @ApiOperation(value = "新增${table.comment}")
+    public Object add(@RequestBody ${entity} o){
+        boolean flag = ${table.entityPath}Service.save(o);
+        String result = "";
+        if(flag){
+            result = "{\"code\":200,\"message\":\"处理成功\"}";
+        }else{
+            result = "{\"code\":500,\"message\":\"处理失败\"}";
+        }
+        return JSONObject.parseObject(result);
+    }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation(value = "根据id删除${table.comment}")
+    public Object delete(@PathVariable Integer id){
+        boolean flag = ${table.entityPath}Service.removeById(id);
+        String result = "";
+        if(flag){
+        result = "{\"code\":200,\"message\":\"处理成功\"}";
+        }else{
+        result = "{\"code\":500,\"message\":\"处理失败\"}";
+        }
+        return JSONObject.parseObject(result);
+    }
+
+    @DeleteMapping("/ids")
+    @ApiOperation(value = "批量删除${table.comment}")
+    public Object deleteIds(@RequestBody List<Integer> ids){
+        boolean flag = ${table.entityPath}Service.removeByIds(ids);
+        String result = "";
+        if(flag){
+        result = "{\"code\":200,\"message\":\"处理成功\"}";
+        }else{
+        result = "{\"code\":500,\"message\":\"处理失败\"}";
+        }
+        return JSONObject.parseObject(result);
+    }
+
+    @PutMapping
+    @ApiOperation(value = "更新${table.comment}")
+    public Object update(@RequestBody ${entity} o){
+        boolean flag = ${table.entityPath}Service.updateById(o);
+        String result = "";
+        if(flag){
+        result = "{\"code\":200,\"message\":\"处理成功\"}";
+        }else{
+        result = "{\"code\":500,\"message\":\"处理失败\"}";
+        }
+        return JSONObject.parseObject(result);
+    }
+
+    @GetMapping("/page")
+    @ApiOperation(value = "分页得到${table.comment}")
+    public IPage<${entity}> page(String key, @RequestParam Integer current, @RequestParam Integer size){
+        Page<${entity}> page = new Page<>();
+        page.setCurrent(current);
+        page.setSize(size);
+        QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("name", key);
+        IPage<${entity}> result;
+        if(key!=null && key!=""){
+            result = ${table.entityPath}Service.page(page, queryWrapper);
+        }else{
+            result = ${table.entityPath}Service.page(page, null);
+        }
+        return result;
+    }
+}
+
+
+
+
