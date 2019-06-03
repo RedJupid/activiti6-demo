@@ -2,9 +2,13 @@ package com.xd.modules.sys.entity;
 
 import lombok.Data;
 
-@Data
-public class FlowVariate {
+import java.io.Serializable;
 
+@Data
+public class FlowVariate implements Serializable {
+
+
+    private static final long serialVersionUID = -4631331388390043177L;
     //任务是否顺利完成
     private Integer isOK;
 
@@ -19,4 +23,7 @@ public class FlowVariate {
 
     //是否发送厂家
     private Integer sendFactory;
+
+    //确定指派人
+    private String assignor;
 }

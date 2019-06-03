@@ -38,20 +38,20 @@ public class ProcessController {
 
     @ApiOperation(value = "查询某个角色的所有当前任务或某流程实例的当前任务")
     @GetMapping("/task")
-    public List<Object> getTask(@RequestParam String applicant, String instanceId){
+    public List<HashMap<String,Object>> getTask(@RequestParam String applicant, String processId){
 
         List<Task> list = new ArrayList<>();
-        if (instanceId !=null && instanceId!=""){
+        if (processId !=null && processId!=""){
             list = taskService.createTaskQuery()
                     .taskAssignee(applicant)
-                    .processInstanceId(instanceId)
+                    .processInstanceId(processId)
                     .list();
         }else{
             list = taskService.createTaskQuery().taskAssignee(applicant).list();
         }
-        List<Object> l = new ArrayList<>();
+        List<HashMap<String, Object>> l = new ArrayList<>();
         for (Task t: list){
-            Map<String, Object> m = new HashMap<>();
+            HashMap<String, Object> m = new HashMap<>();
             m.put("id", t.getId());
             m.put("name",t.getName());
             m.put("instanceId",t.getProcessInstanceId());

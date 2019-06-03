@@ -1,6 +1,7 @@
 package com.activiti6.util.process;
 
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
+//import org.apache.log4j.Logger;
 import sun.misc.BASE64Encoder;
 
 import java.io.IOException;
@@ -9,8 +10,9 @@ import java.io.InputStream;
 /**
  * Created by user on 2018/7/12.
  */
+@Slf4j
 public class Base64Utils {
-    private static Logger logger = Logger.getLogger(Base64Utils.class);
+//    private static Logger logger = Logger.getLogger(Base64Utils.class);
     private static BASE64Encoder encoder = new BASE64Encoder();
 
     public static String ioToBase64(InputStream in) throws IOException {
@@ -22,7 +24,7 @@ public class Base64Utils {
             strBase64 = encoder.encode(bytes);      //将字节流数组转换为字符串
             in.close();
         } catch (IOException ioe) {
-            logger.error("图片转64编码异常",ioe);
+            log.error("图片转64编码异常",ioe);
         }
         return strBase64;
     }

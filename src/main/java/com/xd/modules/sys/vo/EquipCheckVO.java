@@ -11,24 +11,6 @@ import java.util.List;
 @Data
 public class EquipCheckVO {
 
-//    private Long id;
-//
-//    private String equipName;
-//
-//    private String manufacturer;
-//
-//    private String informBill;
-//
-//    private String applyBill;
-//
-//    private String recordBill;
-//
-//    private String lackBill;
-//
-//    private String addBill;
-//
-//    private String processId;
-
     private String taskId;
 
     private EquipCheck equipCheck;

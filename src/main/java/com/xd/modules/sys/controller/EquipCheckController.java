@@ -66,13 +66,13 @@ private final Logger logger = LoggerFactory.getLogger(EquipCheckController.class
 
     @PostMapping("/start")
     @ApiOperation(value = "开启流程并填写基本信息")
+    @Transactional
     public String start(@RequestBody EquipCheckVO equipCheckVO){
-        String key = "设备开箱检查2";
-        ProcessInstance pi = runtimeService.startProcessInstanceByKey(key);
-        Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).singleResult();
+        String key = "设备开箱检查";
         Map m = new HashMap();
         m.put("fv", equipCheckVO.getFlowVariate());
-        taskService.complete(task.getId(), m);//完成任务并加入fv流程变量
+        //开启流程并加入流程变量
+        ProcessInstance pi = runtimeService.startProcessInstanceByKey(key,m);
         String processId = pi.getProcessInstanceId();//流程实例id
         EquipCheck equipCheck = equipCheckVO.getEquipCheck();
         equipCheck.setProcessId(processId);
@@ -80,13 +80,16 @@ private final Logger logger = LoggerFactory.getLogger(EquipCheckController.class
         return processId;
     }
 
-    @GetMapping("/finish")
+    @PostMapping("/finish")
+    @Transactional
     public String finishTask(@RequestBody EquipCheckVO equipCheckVO){
         String id = equipCheckVO.getTaskId();
         Task task = taskService.createTaskQuery().taskId(id).singleResult();
         if (task == null){
             return "没有相应任务";
         }
+        //更新基本信息
+        equipCheckService.updateById(equipCheckVO.getEquipCheck());
         String processId = task.getProcessInstanceId();
         taskService.setVariable(id, "fv", equipCheckVO.getFlowVariate());
         taskService.complete(id);
