@@ -16,6 +16,6 @@ import java.util.List;
  */
 public interface IEquipCheckService extends IService<EquipCheck> {
 
-    List<EquipCheckVO> selectWithProAndOpi(String processId);
+    List<EquipCheckVO> selectWithProAndCom(String processId);
 
 }

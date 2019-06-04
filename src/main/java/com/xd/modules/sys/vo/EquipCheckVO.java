@@ -1,9 +1,6 @@
 package com.xd.modules.sys.vo;
 
-import com.xd.modules.sys.entity.CheckOpinion;
-import com.xd.modules.sys.entity.EquipCheck;
-import com.xd.modules.sys.entity.FlowVariate;
-import com.xd.modules.sys.entity.Problem;
+import com.xd.modules.sys.entity.*;
 import lombok.Data;
 
 import java.util.List;
@@ -17,7 +14,9 @@ public class EquipCheckVO {
 
     private List<Problem> problems;
 
-    private List<CheckOpinion> checkOpinions;
+//    private List<CheckOpinion> checkOpinions;
+
+    private List<MyComment> myComments;
 
     private FlowVariate flowVariate;
 

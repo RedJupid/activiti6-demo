@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xd.modules.sys.entity.CheckOpinion;
+import com.xd.modules.sys.entity.MyComment;
 import com.xd.modules.sys.entity.Problem;
 import com.xd.modules.sys.service.ICheckOpinionService;
 import com.xd.modules.sys.service.IProblemService;
@@ -15,6 +15,7 @@ import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.impl.identity.Authentication;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.springframework.transaction.annotation.Transactional;
@@ -88,26 +89,40 @@ private final Logger logger = LoggerFactory.getLogger(EquipCheckController.class
         if (task == null){
             return "没有相应任务";
         }
+        String processId = task.getProcessInstanceId();
+
+        //如果存在审批意见就保存到数据库当中
+        List<MyComment> comments = equipCheckVO.getMyComments();
+        if (comments!=null && comments.size()>0){
+            MyComment comment = comments.get(0);
+            Authentication.setAuthenticatedUserId(comment.getUserId());
+            taskService.addComment(id, processId,comment.getMessage());
+        }
         //更新基本信息
         equipCheckService.updateById(equipCheckVO.getEquipCheck());
-        String processId = task.getProcessInstanceId();
+
         taskService.setVariable(id, "fv", equipCheckVO.getFlowVariate());
         taskService.complete(id);
+        //如果提出了问题就保存到数据库当中
         List<Problem> problems = equipCheckVO.getProblems();
         if (problems!=null && problems.size()>0){
-            problemService.save(problems.get(0));
+            Problem problem = problems.get(0);
+            problem.setProcessId(processId);
+            problemService.save(problem);
         }
-        List<CheckOpinion> checkOpinions = equipCheckVO.getCheckOpinions();
-        if (checkOpinions!=null && checkOpinions.size()>0){
-            checkOpinionService.save(checkOpinions.get(0));
-        }
+//        List<CheckOpinion> checkOpinions = equipCheckVO.getCheckOpinions();
+//        if (checkOpinions!=null && checkOpinions.size()>0){
+//            checkOpinionService.save(checkOpinions.get(0));
+//            taskService.addComment()
+//        }
+
         return "success";
     }
 
-    @GetMapping("/getWithProAndOpi")
+    @GetMapping("/selectWithProAndCom")
     @ApiOperation(value = "获取对应流程实例的问题和意见以及基本信息")
     public List<EquipCheckVO> getWithProAndOpi(String processId){
-        return equipCheckService.selectWithProAndOpi(processId);
+        return equipCheckService.selectWithProAndCom(processId);
     }
 
     @GetMapping("/all")

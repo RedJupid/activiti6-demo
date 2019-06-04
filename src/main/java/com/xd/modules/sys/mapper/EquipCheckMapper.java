@@ -16,6 +16,6 @@ import java.util.List;
  */
 public interface EquipCheckMapper extends BaseMapper<EquipCheck> {
 
-    List<EquipCheckVO> selectWithProAndOpi(String processId);
+    List<EquipCheckVO> selectWithProAndCom(String processId);
 
 }

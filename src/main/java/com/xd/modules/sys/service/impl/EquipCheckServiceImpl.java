@@ -21,7 +21,7 @@ import java.util.List;
 public class EquipCheckServiceImpl extends ServiceImpl<EquipCheckMapper, EquipCheck> implements IEquipCheckService {
 
     @Override
-    public List<EquipCheckVO> selectWithProAndOpi(String processId) {
-        return this.baseMapper.selectWithProAndOpi(processId);
+    public List<EquipCheckVO> selectWithProAndCom(String processId) {
+        return this.baseMapper.selectWithProAndCom(processId);
     }
 }

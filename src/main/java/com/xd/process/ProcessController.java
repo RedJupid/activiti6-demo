@@ -1,6 +1,7 @@
 package com.xd.process;
 
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
@@ -22,6 +23,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/process")
+@Api(tags = {"流程控制器"})
 public class ProcessController {
 
     @Autowired
