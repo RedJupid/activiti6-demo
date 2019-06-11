@@ -58,7 +58,7 @@ public class DefaultProcessDiagramCanvas {
   protected static final int MARKER_WIDTH = 12;
   protected static final int FONT_SIZE = 11;
   protected static final int FONT_SPACING = 2;
-  protected static final int TEXT_PADDING = 3;
+  protected static final int TEXT_PADDING = 1;
   protected static final int ANNOTATION_TEXT_PADDING = 7;
   protected static final int LINE_HEIGHT = FONT_SIZE + FONT_SPACING;
   
@@ -69,7 +69,7 @@ public class DefaultProcessDiagramCanvas {
   protected static Color EVENT_COLOR = new Color(255, 255, 255);
   protected static Color CONNECTION_COLOR = new Color(88, 88, 88);
   protected static Color CONDITIONAL_INDICATOR_COLOR = new Color(255, 255, 255);
-  protected static Color HIGHLIGHT_COLOR = Color.GREEN;
+  protected static Color HIGHLIGHT_COLOR = new Color(92,184,92);
   protected static Color LABEL_COLOR = new Color(112, 146, 190);
   protected static Color TASK_BORDER_COLOR = new Color(187, 187, 187);
   protected static Color EVENT_BORDER_COLOR = new Color(88, 88, 88);
@@ -91,7 +91,7 @@ public class DefaultProcessDiagramCanvas {
   protected static Stroke ASSOCIATION_STROKE = new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f,  new float[] { 2.0f, 2.0f }, 0.0f);
 
   // icons
-  protected static int ICON_PADDING = 5;
+  protected static int ICON_PADDING = 2;
   protected static BufferedImage USERTASK_IMAGE;
   protected static BufferedImage SCRIPTTASK_IMAGE;
   protected static BufferedImage SERVICETASK_IMAGE;
@@ -327,7 +327,7 @@ public class DefaultProcessDiagramCanvas {
     Paint originalPaint = g.getPaint();
     Stroke originalStroke = g.getStroke();
 //    g.setPaint(EVENT_COLOR);
-    g.setPaint(new Color(255,0,0));
+    g.setPaint(new Color(217,83,79));
     Ellipse2D circle = new Ellipse2D.Double(graphicInfo.getX(), graphicInfo.getY(), 
         graphicInfo.getWidth(), graphicInfo.getHeight());
     g.fill(circle);
@@ -689,7 +689,7 @@ public class DefaultProcessDiagramCanvas {
     
     // Create a new gradient paint for every task box, gradient depends on x and y and is not relative
 //    g.setPaint(TASK_BOX_COLOR);
-    g.setPaint(new Color(255,255,0));
+    g.setPaint(new Color(198,233,224));
     int arcR = 6;
     if (thickBorder)
     	arcR = 3;

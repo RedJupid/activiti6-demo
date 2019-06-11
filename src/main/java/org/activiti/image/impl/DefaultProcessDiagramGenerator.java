@@ -739,9 +739,9 @@ public class DefaultProcessDiagramGenerator implements HMProcessDiagramGenerator
       }
 
       if (highLightedExecutedActivities.contains(flowNode.getId())) {
-        processDiagramCanvas.HIGHLIGHT_COLOR = Color.RED;
-        drawColorHighLight(processDiagramCanvas, bpmnModel.getGraphicInfo(flowNode.getId()),Color.RED);
-        processDiagramCanvas.HIGHLIGHT_COLOR = Color.GREEN;
+//        processDiagramCanvas.HIGHLIGHT_COLOR = Color.RED;
+        drawColorHighLight(processDiagramCanvas, bpmnModel.getGraphicInfo(flowNode.getId()),new Color(217,83,79));
+//        processDiagramCanvas.HIGHLIGHT_COLOR = Color.GREEN;
       }
 
     }
