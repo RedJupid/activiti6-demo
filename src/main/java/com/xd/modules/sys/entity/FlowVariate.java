@@ -24,6 +24,10 @@ public class FlowVariate implements Serializable {
     //是否发送厂家
     private Integer sendFactory;
 
+    //是否发送给环节负责人
+    private Integer sendlinkLeader;
+
     //确定指派人
     private String assignor;
+
 }

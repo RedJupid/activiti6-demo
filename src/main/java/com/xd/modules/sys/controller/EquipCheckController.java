@@ -37,7 +37,7 @@ import java.util.Map;
  *   @author zxd
  *   @since 2019-05-30
  */
-@Api(tags = {"设备开箱检查控制器"})
+@Api(tags = {"5设备开箱检查控制器"})
 @RestController
 @RequestMapping("/sys/equip-check")
 public class EquipCheckController {
@@ -60,10 +60,6 @@ private final Logger logger = LoggerFactory.getLogger(EquipCheckController.class
 
     @Autowired
     IProblemService problemService;
-
-    @Autowired
-    ICheckOpinionService checkOpinionService;
-
 
     @PostMapping("/start")
     @ApiOperation(value = "开启流程并填写基本信息")
