@@ -18,7 +18,7 @@ import org.activiti.engine.impl.context.Context;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
-import org.activiti.image.HMProcessDiagramGenerator;
+import com.activiti6.image.HMProcessDiagramGenerator;
 import org.activiti.spring.ProcessEngineFactoryBean;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;

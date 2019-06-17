@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package org.activiti.image.impl;
+package com.activiti6.image.impl;
 
 import org.activiti.bpmn.model.AssociationDirection;
 import org.activiti.bpmn.model.GraphicInfo;
@@ -48,7 +48,7 @@ import java.util.List;
  */
 public class DefaultProcessDiagramCanvas {
 
-  protected static final Logger LOGGER = LoggerFactory.getLogger(org.activiti.image.impl.DefaultProcessDiagramCanvas.class);
+  protected static final Logger LOGGER = LoggerFactory.getLogger(DefaultProcessDiagramCanvas.class);
   public enum SHAPE_TYPE {Rectangle, Rhombus, Ellipse}
 
   // Predefined sized
