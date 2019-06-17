@@ -11,12 +11,13 @@
  * limitations under the License.
  */
 
-package com.activiti6.image.impl;
+package org.activiti.image.impl;
 
 import org.activiti.bpmn.model.Event;
 import org.activiti.bpmn.model.Process;
 import org.activiti.bpmn.model.*;
-import com.activiti6.image.HMProcessDiagramGenerator;
+import org.activiti.image.HMProcessDiagramGenerator;
+import org.activiti.image.impl.DefaultProcessDiagramCanvas;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

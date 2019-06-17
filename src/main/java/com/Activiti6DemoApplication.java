@@ -1,7 +1,7 @@
 package com;
 
 import org.activiti.image.ProcessDiagramGenerator;
-import com.activiti6.image.impl.DefaultProcessDiagramGenerator;
+import org.activiti.image.impl.DefaultProcessDiagramGenerator;
 import org.activiti.spring.boot.SecurityAutoConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

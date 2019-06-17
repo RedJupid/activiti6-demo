@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.activiti6.image;
+package org.activiti.image;
 
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.image.ProcessDiagramGenerator;
